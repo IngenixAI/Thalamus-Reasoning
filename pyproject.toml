@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=77"]  # PEP 639 license fields
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thalamus-reasoning"
+version = "0.1.0"
+description = "Thalamus-Reasoning: a multimodal language model that reads bulk and single-cell transcriptomic profiles"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Ingenix.ai" }]
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "torch>=2.6",
+    "transformers==5.5.3",
+    "huggingface_hub>=0.34",
+    "numpy",
+    "pandas",
+    "pyarrow",
+    "scipy",
+    "anndata>=0.11",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+# Kernels for Qwen3.5 linear attention in the transformers backend (vLLM has its own).
+fast = ["flash-linear-attention", "causal-conv1d"]
+vllm = ["vllm==0.28.0"]
+app = ["gradio>=6,<7"]
+eval = [
+    "thalamus-reasoning[vllm]",
+    "deepeval==4.1.1",
+    "google-genai",
+    "scikit-learn",
+]
+dev = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/IngenixAI/Thalamus-Reasoning"
+Model = "https://huggingface.co/ingenix/Thalamus-Reasoning-9B"
+Paper = "https://arxiv.org/abs/2605.06728"
+
+[project.scripts]
+tr-embed = "thalamus_reasoning.preprocess:main"
+tr-chat = "thalamus_reasoning.chat:main"
+tr-app = "thalamus_reasoning.app:main"
+
+[project.entry-points."vllm.general_plugins"]
+thalamus_reasoning = "thalamus_reasoning.vllm_plugin:register_thalamus_reasoning"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:deepeval"  # deepeval's pytest plugin starts telemetry
+
+[tool.uv]
+# deepeval pins click<8.4 while huggingface-hub (required by vLLM 0.28) needs click>=8.4.2; both work with 8.4.2.
+override-dependencies = ["click==8.4.2"]
+
+[tool.uv.extra-build-dependencies]
+causal-conv1d = [{ requirement = "torch", match-runtime = true }]

@@ -1,0 +1,9 @@
+Thalamus-Reasoning
+Copyright 2026 Ingenix.ai
+
+Licensed under the Apache License, Version 2.0; see LICENSE.
+
+The model weights are a derivative of Qwen3.5-9B (Copyright Alibaba Cloud, Apache License 2.0).
+src/thalamus_reasoning/preprocess.py re-implements the rank-value encoding and embedding extraction of Geneformer
+(Theodoris lab, Apache License 2.0); the Geneformer-V2-104M weights are downloaded from ctheodoris/Geneformer.
+eval/benchmark_perturbqa.py downloads the PerturbQA benchmark (Genentech) on first use, under its own license.

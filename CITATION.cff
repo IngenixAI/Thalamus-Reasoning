@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: "If you use Thalamus-Reasoning, please cite the paper below."
+title: "Thalamus-Reasoning"
+type: software
+license: Apache-2.0
+repository-code: "https://github.com/IngenixAI/Thalamus-Reasoning"
+authors:
+  - family-names: Sypetkowski
+    given-names: Maciej
+  - family-names: Smoliński
+    given-names: Łukasz
+  - family-names: Kinas
+    given-names: Remigiusz
+  - family-names: Krawczyk
+    given-names: Joanna
+  - family-names: Hofman
+    given-names: Bartłomiej
+  - family-names: Możwiłło
+    given-names: Aleksandra
+  - family-names: Pikusa
+    given-names: Michał
+  - family-names: Jetka
+    given-names: Tomasz
+  - family-names: Powalski
+    given-names: Rafał
+preferred-citation:
+  type: article
+  title: "Thalamus-Reasoning: A Multimodal Large Language Model for Multi-Sample Omics Reasoning"
+  authors:
+    - family-names: Sypetkowski
+      given-names: Maciej
+    - family-names: Smoliński
+      given-names: Łukasz
+    - family-names: Kinas
+      given-names: Remigiusz
+    - family-names: Krawczyk
+      given-names: Joanna
+    - family-names: Hofman
+      given-names: Bartłomiej
+    - family-names: Możwiłło
+      given-names: Aleksandra
+    - family-names: Pikusa
+      given-names: Michał
+    - family-names: Jetka
+      given-names: Tomasz
+    - family-names: Powalski
+      given-names: Rafał
+  journal: "arXiv preprint arXiv:2605.06728"
+  year: 2026
+  url: "https://arxiv.org/abs/2605.06728"
+  identifiers:
+    - type: doi
+      value: 10.48550/arXiv.2605.06728
